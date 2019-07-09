@@ -1,6 +1,6 @@
 FROM alpine
 
-COPY bin/app /app/app
+COPY main /app/app
 
 COPY kubectl /usr/local/bin
 
