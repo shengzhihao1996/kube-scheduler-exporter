@@ -1,0 +1,18 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: aiops
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aiops
+  template:
+    metadata:
+      labels:
+        app: aiops
+    spec:
+      containers:
+      - image: aiops:release-1.0.0
+        imagePullPolicy: Always
+        name: aiops
