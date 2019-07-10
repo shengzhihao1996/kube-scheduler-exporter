@@ -65,7 +65,7 @@ func memorysearch(nodename string, schedu bool, evic string) {
 	if schedu == false && memoryinfo > criticality {
 		scheduler(nodename, memoryinfo, false)
 	}
-	if schedu == false && memoryinfo < criticality && evic == "true" {
+	if schedu == false && memoryinfo < criticality && evic == "test" {
 		evication(nodename)
 	}
 }

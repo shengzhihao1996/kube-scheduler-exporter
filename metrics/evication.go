@@ -66,14 +66,15 @@ func evication(hostname string) {
 	sort.Sort(sort.Reverse(sort.Float64Slice(s1)))
 	for i := 0; i < 3; i++ {
 		pod_name := value[s1[i]]
-		go evicated(pod_name, namespaces[pod_name])
+		evicated(pod_name, namespaces[pod_name])
 	}
 	dindin.Evicatpod(hostname, value[s1[0]], value[s1[1]], value[s1[2]])
+	time.Sleep(15 * time.Second)
 }
 
 func evicated(pod_name string, namespaces string) {
 	defer panics()
-	export := shell("echo kubectl delete po  " + pod_name + " -n " + namespaces + "  --kubeconfig=/etc/config")
+	export := shell("kubectl delete po  " + pod_name + " -n " + namespaces + "  --kubeconfig=/etc/config")
 	fmt.Println(export)
 
 }

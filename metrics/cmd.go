@@ -20,6 +20,8 @@ func scheduler(nodename string, value float64, schedu bool) {
 	}
 	if schedu == false {
 		export := shell(" kubectl uncordon " + nodename + " --kubeconfig=/etc/config")
+		_ = shell(" kubectl label node  " + nodename + " block-  --kubeconfig=/etc/config")
+		_ = shell(" kubectl label node  " + nodename + " evicated-  --kubeconfig=/etc/config")
 		fmt.Println(export)
 		dindin.Uncordon(nodename, value, export)
 		fmt.Println(nodename, "解除限制")
